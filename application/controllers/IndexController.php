@@ -2,15 +2,18 @@
 
 class IndexController extends Zend_Controller_Action
 {
+    private $logger;
 
     public function init()
     {
-        /* Initialize action controller here */
+        $this->logger = Zend_Registry::get('logger');
     }
 
     public function indexAction()
     {
-        // action body
+        $dbTable = new Application_Model_DbTable_Address();
+
+        $this->logger->log($dbTable->info(), Zend_Log::DEBUG);
     }
 
 
