@@ -2,6 +2,9 @@
 
 class Application_Model_PersonMapper
 {
+    /**
+     * @var Application_Model_DbTable_Person $_dbTable
+     */
     protected $_dbTable;
 
     public function setDbTable($dbTable)
@@ -30,21 +33,42 @@ class Application_Model_PersonMapper
 
     public function save(Application_Model_Person $person)
     {
-        $data = array(
+        $data = [
             'name'  => $person->getName(),
             'email' => $person->getEmail(),
             'phone' => $person->getPhone(),
             'cpf'   => $person->getCpf(),
-        );
+        ];
+
+        if (null === $person->getId()) {
+            return $this->getDbTable()->insert($data);
+        }
+
+        return $this->getDbTable()->update($data, $person->getId());
     }
 
-    public function find($id, $address)
+    public function find($id)
     {
-        //
+        $result = $this->getDbTable()->find($id);
+
+        if (!count($result)) {
+            return null;
+        }
+
+        $row = $result->current();
+
+        return Application_Model_Person::buildFromDbTable($row);
     }
 
     public function fetchAll()
     {
-        //
+        $result = $this->getDbTable()->fetchAll();
+        $entries = [];
+
+        foreach ($result as $row) {
+            $entries[] = Application_Model_Person::buildFromDbTableRow($row);
+        }
+
+        return $entries;
     }
 }
