@@ -1,6 +1,6 @@
 <?php
 
-abstract class Application_Model_Abstract
+abstract class Application_Model_ModelAbstract
 {
     public function __construct(array $properties)
     {

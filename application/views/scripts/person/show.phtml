@@ -1,4 +1,24 @@
+<?php
+/** @var $person Application_Model_Person */
+$person = $this->person;
+?>
+
 <br /><br />
 <div id="view-content">
-	<p>View script for controller <b>Person</b> and script/action name <b>show</b></p>
+	<div>
+        <h3>Name</h3>
+        <p><?php echo $person->getName() ?></p>
+    </div>
+    <div>
+        <h3>E-mail</h3>
+        <p><?php echo $person->getEmail() ?></p>
+    </div>
+    <div>
+        <h3>Telefone</h3>
+        <p><?php echo $person->getPhone() ?></p>
+    </div>
+    <div>
+        <h3>CPF</h3>
+        <p><?php echo $person->getCpf() ?></p>
+    </div>
 </div>

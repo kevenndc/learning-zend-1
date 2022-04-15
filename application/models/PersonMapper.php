@@ -33,12 +33,12 @@ class Application_Model_PersonMapper
 
     public function save(Application_Model_Person $person)
     {
-        $data = [
+        $data = array(
             'name'  => $person->getName(),
             'email' => $person->getEmail(),
             'phone' => $person->getPhone(),
             'cpf'   => $person->getCpf(),
-        ];
+        );
 
         if (null === $person->getId()) {
             return $this->getDbTable()->insert($data);
@@ -57,18 +57,31 @@ class Application_Model_PersonMapper
 
         $row = $result->current();
 
-        return new Application_Model_Person((array) $row);
+        return new Application_Model_Person($row->toArray());
     }
 
     public function fetchAll()
     {
         $result = $this->getDbTable()->fetchAll();
-        $entries = [];
+        $entries = array();
 
         foreach ($result as $row) {
-            $entries[] = new Application_Model_Person((array) $row);
+            $entries[] = new Application_Model_Person($row->toArray());
         }
 
         return $entries;
+    }
+
+    public function delete($id)
+    {
+        $result = $this->getDbTable()->find($id);
+
+        if (!count($result)) {
+            return false;
+        }
+
+        $row = $result->current();
+
+        return (bool) $row->delete();
     }
 }

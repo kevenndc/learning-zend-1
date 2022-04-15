@@ -34,13 +34,21 @@ class PersonController extends Zend_Controller_Action
 
     public function showAction()
     {
-        $id = $this->getParam('id');
-
+        $id     = $this->getParam('id');
         $mapper = new Application_Model_PersonMapper();
-
         $person = $mapper->find($id);
+
+        $this->view->person = $person;
     }
 
+    public function deleteAction()
+    {
+        $id     = $this->getParam('id');
+        $mapper = new Application_Model_PersonMapper();
+        $person = $mapper->delete($id);
+
+        return $this->_helper->redirector('index');
+    }
 
 }
 

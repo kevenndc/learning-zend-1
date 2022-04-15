@@ -28,7 +28,7 @@ class Application_Form_Person extends Zend_Form
             'required'      => true,
             'filters'       => array('Digits'),
             'validators'    => array(
-                new Zend_Validate_StringLength(array(0, 11)),
+                new Zend_Validate_StringLength(11),
                 new Zend_Validate_Digits(),
             )
         ));
@@ -38,7 +38,7 @@ class Application_Form_Person extends Zend_Form
             'required'      => true,
             'filters'       => array('Digits'),
             'validators'    => array(
-                new Zend_Validate_StringLength(array(0, 12)),
+                new Zend_Validate_StringLength(12),
                 new Zend_Validate_Digits(),
             )
         ));

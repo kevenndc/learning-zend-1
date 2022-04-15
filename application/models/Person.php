@@ -1,6 +1,6 @@
 <?php
 
-class Application_Model_Person extends Application_Model_Abstract
+class Application_Model_Person extends Application_Model_ModelAbstract
 {
     protected $_id;
     protected $_name;
