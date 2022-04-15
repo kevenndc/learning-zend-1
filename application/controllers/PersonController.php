@@ -10,7 +10,10 @@ class PersonController extends Zend_Controller_Action
 
     public function indexAction()
     {
-        // action body
+        $mapper     = new Application_Model_PersonMapper();
+        $persons    = $mapper->fetchAll();
+
+        $this->view->persons = $persons;
     }
 
     public function signAction()

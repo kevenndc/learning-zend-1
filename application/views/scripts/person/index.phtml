@@ -1,4 +1,26 @@
 <br /><br />
 <div id="view-content">
-	<p>View script for controller <b>Person</b> and script/action name <b>index</b></p>
+	<table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Telefone</th>
+                <th>CPF</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($this->persons as $person): ?>
+                <?php /** @var $person Application_Model_Person */ ?>
+                <tr>
+                    <td><?php echo $person->getId() ?></td>
+                    <td><?php echo $person->getName() ?></td>
+                    <td><?php echo $person->getEmail() ?></td>
+                    <td><?php echo $person->getPhone() ?></td>
+                    <td><?php echo $person->getPhone() ?></td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
 </div>
