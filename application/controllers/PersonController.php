@@ -45,12 +45,39 @@ class PersonController extends Zend_Controller_Action
     {
         $id     = $this->getParam('id');
         $mapper = new Application_Model_PersonMapper();
-        $person = $mapper->delete($id);
+        $mapper->delete($id);
 
         return $this->_helper->redirector('index');
     }
 
+    public function editAction()
+    {
+        $id         = $this->getParam('id');
+        $request    = $this->getRequest();
+        $form       = new Application_Form_Person();
+        $mapper     = new Application_Model_PersonMapper();
+        $person     = $mapper->find($id);
+
+        $form->setDefaults($person->toArray());
+
+        $this->view->form = $form;
+
+        if ($request->isGet()) {
+            return true;
+        }
+
+        if ($form->isValid($request->getPost())) {
+            $person = new Application_Model_Person($form->getValues());
+            $person->setId($id);
+            $mapper->save($person);
+
+            return $this->_helper->redirector('index');
+        }
+    }
+
 }
+
+
 
 
 

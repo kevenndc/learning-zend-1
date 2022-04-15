@@ -84,4 +84,5 @@ class Application_Model_PersonMapper
 
         return (bool) $row->delete();
     }
+
 }

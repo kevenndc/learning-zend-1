@@ -2,6 +2,19 @@
 
 class Application_Form_Person extends Zend_Form
 {
+    /** @var $_person Application_Model_Person */
+    protected $_person;
+
+    /**
+     * @param null|Application_Model_Person $person
+     * @param $options
+     */
+    public function __construct($person = null, $options = null)
+    {
+        parent::__construct($options);
+        $this->_person = $person;
+    }
+
     public function init()
     {
         $this->setMethod('POST');
@@ -38,7 +51,7 @@ class Application_Form_Person extends Zend_Form
             'required'      => true,
             'filters'       => array('Digits'),
             'validators'    => array(
-                new Zend_Validate_StringLength(12),
+                new Zend_Validate_StringLength(11),
                 new Zend_Validate_Digits(),
             )
         ));

@@ -89,5 +89,16 @@ class Application_Model_Person extends Application_Model_ModelAbstract
         $this->_cpf = $cpf;
         return $this;
     }
+
+    public function toArray()
+    {
+        return array(
+            'id'    => $this->getId(),
+            'name'  => $this->getName(),
+            'email' => $this->getEmail(),
+            'phone' => $this->getPhone(),
+            'cpf'   => $this->getCpf(),
+        );
+    }
 }
 

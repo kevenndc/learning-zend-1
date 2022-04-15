@@ -18,3 +18,12 @@ $router->addRoute('person-delete', new Zend_Controller_Router_Route(
     ),
     array('id' => '^\d+$')
 ));
+
+$router->addRoute('person-edit', new Zend_Controller_Router_Route(
+    'person/edit/:id',
+    array(
+        'action'        => 'edit',
+        'controller'    => 'person',
+    ),
+    array('id' => '^\d+$')
+));

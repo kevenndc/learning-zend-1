@@ -21,4 +21,6 @@ abstract class Application_Model_ModelAbstract
             }
         }
     }
+
+    abstract public function toArray();
 }

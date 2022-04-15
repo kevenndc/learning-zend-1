@@ -21,4 +21,5 @@ $person = $this->person;
         <h3>CPF</h3>
         <p><?php echo $person->getCpf() ?></p>
     </div>
+    <a href="<?php echo '/person/delete/' . $person->getId() ?>">Delete</a>
 </div>
