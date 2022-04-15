@@ -11,6 +11,11 @@
           <actionMethod actionName="index"/>
         </controllerFile>
         <controllerFile controllerName="Error"/>
+        <controllerFile controllerName="Person">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="sign"/>
+          <actionMethod actionName="show"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="Person"/>
@@ -40,6 +45,15 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Error">
             <viewScriptFile forActionName="error"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Person">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Person">
+            <viewScriptFile forActionName="sign"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Person">
+            <viewScriptFile forActionName="show"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>

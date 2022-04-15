@@ -1,26 +1,12 @@
 <?php
 
-class Application_Model_Person
+class Application_Model_Person extends Application_Model_Abstract
 {
     protected $_id;
     protected $_name;
     protected $_email;
     protected $_phone;
     protected $_cpf;
-
-    /**
-     * @param Zend_Db_Table_Row_Abstract $row
-     * @return Application_Model_Person
-     */
-    public static function buildFromDbTableRow($row)
-    {
-        return (new static())
-            ->setId($row->id)
-            ->setCpf($row->cpf)
-            ->setName($row->name)
-            ->setEmail($row->email)
-            ->setPhone($row->phone);
-    }
 
     /**
      * @return string

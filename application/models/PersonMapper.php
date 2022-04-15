@@ -57,7 +57,7 @@ class Application_Model_PersonMapper
 
         $row = $result->current();
 
-        return Application_Model_Person::buildFromDbTable($row);
+        return new Application_Model_Person((array) $row);
     }
 
     public function fetchAll()
@@ -66,7 +66,7 @@ class Application_Model_PersonMapper
         $entries = [];
 
         foreach ($result as $row) {
-            $entries[] = Application_Model_Person::buildFromDbTableRow($row);
+            $entries[] = new Application_Model_Person((array) $row);
         }
 
         return $entries;

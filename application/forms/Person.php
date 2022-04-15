@@ -65,7 +65,7 @@ class Application_Form_Person extends Zend_Form
 
         $this->addElement('submit', 'submit', array(
             'ignore'   => true,
-            'label'    => 'Sign Guestbook',
+            'label'    => 'Register person',
         ));
 
         $this->addElement('hash', 'csrf', array(
