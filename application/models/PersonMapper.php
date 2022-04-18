@@ -1,27 +1,12 @@
 <?php
 
-class Application_Model_PersonMapper
+class Application_Model_PersonMapper extends Application_Model_ModelMapperAbstract
 {
+    
     /**
-     * @var Application_Model_DbTable_Person $_dbTable
+     * @return Application_Model_DbTable_Person
+     * @throws Exception
      */
-    protected $_dbTable;
-
-    public function setDbTable($dbTable)
-    {
-        if (is_string($dbTable)) {
-            $dbTable = new $dbTable();
-        }
-
-        if (!$dbTable instanceof Zend_Db_Table_Abstract) {
-            throw new Exception('Invalid table data gateway provided');
-        }
-
-        $this->_dbTable = $dbTable;
-
-        return $this;
-    }
-
     public function getDbTable()
     {
         if (null === $this->_dbTable) {
@@ -33,12 +18,7 @@ class Application_Model_PersonMapper
 
     public function save(Application_Model_Person $person)
     {
-        $data = array(
-            'name'  => $person->getName(),
-            'email' => $person->getEmail(),
-            'phone' => $person->getPhone(),
-            'cpf'   => $person->getCpf(),
-        );
+        $data = $person->toArray();
 
         if (null === $person->getId()) {
             return $this->getDbTable()->insert($data);

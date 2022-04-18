@@ -31,11 +31,14 @@
           <dbTableFile dbTableName="User"/>
           <dbTableFile dbTableName="Address"/>
           <dbTableFile dbTableName="Person"/>
+          <dbTableFile dbTableName="Employee"/>
         </dbTableDirectory>
         <modelFile modelName="AddressMapper"/>
         <modelFile modelName="Address"/>
         <modelFile modelName="PersonMapper"/>
         <modelFile modelName="Person"/>
+        <modelFile modelName="Employee"/>
+        <modelFile modelName="EmployeeMapper"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <servicesDirectory enabled="false"/>
