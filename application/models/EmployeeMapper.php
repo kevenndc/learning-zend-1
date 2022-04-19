@@ -18,7 +18,12 @@ class Application_Model_EmployeeMapper extends Application_Model_ModelMapperAbst
     
     public function save(Application_Model_Employee $employee)
     {
-        $data = $employee->toArray();
+        $data   = $employee->toArray();
+        $result = $this->getDbTable()->find($employee->getPersonId());
+        
+        if (!count($result)) {
+            return $this->getDbTable()->insert($data);
+        }
         
         return $this->getDbTable()->update($data, $employee->getPersonId());
     }
@@ -58,7 +63,7 @@ class Application_Model_EmployeeMapper extends Application_Model_ModelMapperAbst
         
         if (null !== $employee->getAddressId()) {
             $addressMapper = new Application_Model_AddressMapper();
-            $addressMapper->detete($employee->getAddressId());
+            $addressMapper->delete($employee->getAddressId());
         }
         
         return (bool) $this->getDbTable()->delete($employee->getPersonId());

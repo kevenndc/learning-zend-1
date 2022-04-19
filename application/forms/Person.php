@@ -1,24 +1,9 @@
 <?php
 
-class Application_Form_Person extends Zend_Form
+class Application_Form_Person extends Zend_Form_SubForm
 {
-    /** @var $_person Application_Model_Person */
-    protected $_person;
-
-    /**
-     * @param null|Application_Model_Person $person
-     * @param $options
-     */
-    public function __construct($person = null, $options = null)
-    {
-        parent::__construct($options);
-        $this->_person = $person;
-    }
-
     public function init()
     {
-        $this->setMethod('POST');
-
         $this->addElement('text', 'name', array(
             'label'         => 'O seu nome',
             'required'      => true,
@@ -55,35 +40,8 @@ class Application_Form_Person extends Zend_Form
                 new Zend_Validate_Digits(),
             )
         ));
-
-        $this->addElement('captcha', 'captcha', array(
-            'label'      => 'Insira as 5 letras mostradas abaixo:',
-            'required'   => true,
-            'captcha'    => array(
-                'captcha' => 'Figlet',
-                'wordLen' => 5,
-                'timeout' => 300
-            )
-        ));
-
-        $this->addElement('captcha', 'captcha', array(
-            'label'      => 'Please enter the 5 letters displayed below:',
-            'required'   => true,
-            'captcha'    => array(
-                'captcha' => 'Figlet',
-                'wordLen' => 5,
-                'timeout' => 300
-            )
-        ));
-
-        $this->addElement('submit', 'submit', array(
-            'ignore'   => true,
-            'label'    => 'Register person',
-        ));
-
-        $this->addElement('hash', 'csrf', array(
-            'ignore' => true,
-        ));
     }
+    
+    
 }
 

@@ -15,5 +15,16 @@ class Bootstrap extends Zend_Application_Bootstrap_Bootstrap
         include APPLICATION_PATH . '/configs/routes.php';
     }
     
+    protected function _initAutoloader()
+    {
+        $loader = function($className) {
+            $className = str_replace('\\', '_', $className);
+            Zend_Loader_Autoloader::autoload($className);
+        };
+        
+        $autoloader = Zend_Loader_Autoloader::getInstance();
+        $autoloader->pushAutoloader($loader, 'Application\\');
+    }
+    
 }
 
