@@ -14,7 +14,7 @@ abstract class Application_Model_ModelAbstract
         $methods = get_class_methods($this);
 
         foreach ($properties as $name => $value) {
-            $setter = 'set' . ucfirst($name);
+            $setter = 'set' . Support_Str::pascalCase($name);
 
             if (in_array($setter, $methods)) {
                 $this->$setter($value);

@@ -30,7 +30,7 @@ class Application_Model_AddressMapper extends Application_Model_ModelMapperAbstr
     public function find($id)
     {
         $result = $this->getDbTable()->find($id);
-        
+
         if (!count($result)) {
             return null;
         }
