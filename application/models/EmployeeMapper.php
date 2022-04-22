@@ -21,7 +21,7 @@ class Application_Model_EmployeeMapper extends Application_Model_ModelMapperAbst
         $data   = $employee->toArray();
         $result = $this->getDbTable()->find($employee->getPersonId());
         
-        if (!count($result)) {
+        if (0 === count($result)) {
             return $this->getDbTable()->insert($data);
         }
         

@@ -47,6 +47,8 @@
         <modelFile modelName="Person"/>
         <modelFile modelName="Employee"/>
         <modelFile modelName="EmployeeMapper"/>
+        <modelFile modelName="User"/>
+        <modelFile modelName="UserMapper"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <servicesDirectory enabled="false"/>
